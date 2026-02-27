@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dufault Hive Updates — Rainy Day Bees</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+<style>
+/* ============================================
+   RAINY DAY BEES — THEME-MATCHED LIQUID PAGE
+   Page template: page.hive-host.liquid
+   ============================================ */
+
+:root {
+  --rdb-salmon: #E8836B;
+  --rdb-salmon-light: #F5C2B6;
+  --rdb-dark: #1a1a1a;
+  --rdb-body: #333333;
+  --rdb-muted: #777777;
+  --rdb-border: #e8e8e8;
+  --rdb-bg: #ffffff;
+  --rdb-bg-off: #fafafa;
+  --rdb-honey: #C17A15;
+  --rdb-honey-light: #FDF3E0;
+  --rdb-green: #4A7C59;
+  --rdb-green-light: #EDF5EF;
+  --rdb-blue: #4A6FA5;
+  --rdb-blue-light: #EEF2F8;
+  --rdb-red: #C0392B;
+  --rdb-red-light: #FBEAE8;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--rdb-body);
+  background: var(--rdb-bg);
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--rdb-dark); text-decoration: none; }
+
+/* ── ANNOUNCEMENT BAR ── */
+.announce-bar {
+  background: var(--rdb-salmon);
+  color: #fff;
+  text-align: center;
+  padding: 8px 16px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: .3px;
+}
+
+/* ── HEADER ── */
+.site-header {
+  border-bottom: 1px solid var(--rdb-border);
+  background: var(--rdb-bg);
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+.header-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 12px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.header-logo {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+.header-logo-text {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--rdb-dark);
+  line-height: 1.1;
+  letter-spacing: .5px;
+}
+.header-logo-text span {
+  display: block;
+  font-size: 20px;
+}
+.logo-bee {
+  width: 52px;
+  height: 52px;
+  position: relative;
+}
+/* Simple bee illustration using CSS */
+.logo-bee::before {
+  content: '🐝';
+  font-size: 36px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.header-nav {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+.header-nav a {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: var(--rdb-dark);
+  transition: color .2s;
+}
+.header-nav a:hover { color: var(--rdb-salmon); }
+.header-icons {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.header-icon {
+  width: 20px;
+  height: 20px;
+  color: var(--rdb-dark);
+  cursor: pointer;
+}
+
+/* ── PAGE CONTENT ── */
+.page-content {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 40px 24px 80px;
+}
+
+/* ── PAGE TITLE SECTION ── */
+.page-hero {
+  text-align: center;
+  margin-bottom: 48px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid var(--rdb-border);
+}
+.page-hero h1 {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--rdb-dark);
+  margin-bottom: 6px;
+  letter-spacing: -.3px;
+}
+.page-hero .subtitle {
+  font-size: 15px;
+  color: var(--rdb-muted);
+}
+.page-hero .contact-line {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 16px;
+  padding: 8px 20px;
+  background: var(--rdb-bg-off);
+  border-radius: 100px;
+  font-size: 14px;
+  color: var(--rdb-body);
+}
+.page-hero .contact-line a {
+  font-weight: 600;
+  color: var(--rdb-salmon);
+}
+
+/* ── SECTION HEADERS ── */
+.section-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--rdb-muted);
+  margin-bottom: 20px;
+}
+
+/* ── HIVE DATA CARDS ── */
+.hive-data-section {
+  margin-bottom: 56px;
+}
+.hive-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.hive-card {
+  border: 1px solid var(--rdb-border);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: box-shadow .2s;
+}
+.hive-card:hover {
+  box-shadow: 0 2px 12px rgba(0,0,0,.06);
+}
+.hive-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 24px;
+  background: var(--rdb-bg-off);
+  border-bottom: 1px solid var(--rdb-border);
+}
+.hive-card-name {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--rdb-dark);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.hive-card-name .hive-emoji { font-size: 18px; }
+.hive-card-updated {
+  font-size: 12px;
+  color: var(--rdb-muted);
+}
+.hive-metrics {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+}
+.hive-metric {
+  padding: 20px 24px;
+  text-align: center;
+  position: relative;
+}
+.hive-metric:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 16px;
+  bottom: 16px;
+  width: 1px;
+  background: var(--rdb-border);
+}
+.hive-metric-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 8px;
+  font-size: 18px;
+}
+.hive-metric-icon.weight {
+  background: var(--rdb-honey-light);
+}
+.hive-metric-icon.temp {
+  background: var(--rdb-red-light);
+}
+.hive-metric-icon.humidity {
+  background: var(--rdb-blue-light);
+}
+.hive-metric-value {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--rdb-dark);
+  line-height: 1.2;
+  letter-spacing: -.5px;
+}
+.hive-metric-unit {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--rdb-muted);
+}
+.hive-metric-label {
+  font-size: 12px;
+  color: var(--rdb-muted);
+  margin-top: 2px;
+}
+.hive-metric-trend {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  font-size: 11px;
+  font-weight: 600;
+  margin-top: 4px;
+  padding: 2px 8px;
+  border-radius: 100px;
+}
+.hive-metric-trend.up {
+  color: var(--rdb-green);
+  background: var(--rdb-green-light);
+}
+.hive-metric-trend.down {
+  color: var(--rdb-red);
+  background: var(--rdb-red-light);
+}
+.hive-metric-trend.neutral {
+  color: var(--rdb-muted);
+  background: var(--rdb-bg-off);
+}
+
+/* ── INSPECTION FEED ── */
+.feed-section {
+  margin-bottom: 48px;
+}
+.feed-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.feed-item {
+  display: flex;
+  gap: 20px;
+  padding: 28px 0;
+  border-bottom: 1px solid var(--rdb-border);
+  opacity: 0;
+  transform: translateY(12px);
+  animation: fadeInUp .5s ease forwards;
+}
+.feed-item:first-child { padding-top: 0; }
+.feed-item:last-child { border-bottom: none; }
+.feed-item:nth-child(1) { animation-delay: .05s; }
+.feed-item:nth-child(2) { animation-delay: .1s; }
+.feed-item:nth-child(3) { animation-delay: .15s; }
+.feed-item:nth-child(4) { animation-delay: .2s; }
+.feed-item:nth-child(5) { animation-delay: .25s; }
+
+@keyframes fadeInUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Timeline line */
+.feed-timeline {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+  width: 48px;
+  position: relative;
+}
+.feed-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--rdb-bg-off);
+  border: 2px solid var(--rdb-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--rdb-muted);
+  flex-shrink: 0;
+  position: relative;
+  z-index: 2;
+  overflow: hidden;
+}
+.feed-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.feed-line {
+  flex: 1;
+  width: 2px;
+  background: var(--rdb-border);
+  margin-top: 4px;
+}
+
+.feed-body {
+  flex: 1;
+  min-width: 0;
+}
+.feed-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+  flex-wrap: wrap;
+}
+.feed-date {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--rdb-dark);
+}
+.feed-dot {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: var(--rdb-muted);
+}
+.feed-beekeeper {
+  font-size: 13px;
+  color: var(--rdb-muted);
+}
+.feed-badges {
+  display: flex;
+  gap: 6px;
+  margin: 8px 0 10px;
+  flex-wrap: wrap;
+}
+.feed-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 10px;
+  border-radius: 100px;
+  font-size: 11px;
+  font-weight: 600;
+}
+.feed-badge.healthy {
+  background: var(--rdb-green-light);
+  color: var(--rdb-green);
+}
+.feed-badge.attention {
+  background: var(--rdb-honey-light);
+  color: var(--rdb-honey);
+}
+.feed-badge.critical {
+  background: var(--rdb-red-light);
+  color: var(--rdb-red);
+}
+.feed-text {
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--rdb-body);
+}
+.feed-photo {
+  margin-top: 12px;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid var(--rdb-border);
+  max-width: 400px;
+}
+.feed-photo img {
+  width: 100%;
+  display: block;
+}
+/* Placeholder for photos */
+.feed-photo-placeholder {
+  width: 100%;
+  aspect-ratio: 4/3;
+  background: linear-gradient(135deg, var(--rdb-honey-light) 0%, var(--rdb-green-light) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40px;
+}
+
+/* Year separator */
+.feed-year {
+  text-align: center;
+  padding: 16px 0;
+  position: relative;
+}
+.feed-year::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 1px;
+  background: var(--rdb-border);
+}
+.feed-year span {
+  position: relative;
+  z-index: 1;
+  background: var(--rdb-bg);
+  padding: 0 16px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: var(--rdb-muted);
+  text-transform: uppercase;
+}
+
+/* Load more */
+.load-more {
+  text-align: center;
+  padding-top: 24px;
+}
+.load-more button {
+  font-family: 'DM Sans', sans-serif;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 28px;
+  border: 1px solid var(--rdb-border);
+  border-radius: 100px;
+  background: var(--rdb-bg);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--rdb-body);
+  cursor: pointer;
+  transition: all .2s;
+}
+.load-more button:hover {
+  border-color: var(--rdb-dark);
+  color: var(--rdb-dark);
+}
+
+/* ── FOOTER ── */
+.site-footer {
+  border-top: 1px solid var(--rdb-border);
+  padding: 40px 0;
+  background: var(--rdb-bg);
+}
+.footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 40px;
+}
+.footer-brand h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--rdb-dark);
+  margin-bottom: 4px;
+}
+.footer-brand p {
+  font-size: 13px;
+  color: var(--rdb-muted);
+}
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  text-align: center;
+}
+.footer-links a {
+  font-size: 13px;
+  color: var(--rdb-muted);
+  transition: color .2s;
+}
+.footer-links a:hover { color: var(--rdb-dark); }
+.footer-right {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  text-align: right;
+}
+.footer-right a {
+  font-size: 13px;
+  color: var(--rdb-muted);
+  transition: color .2s;
+}
+.footer-right a:hover { color: var(--rdb-dark); }
+.footer-bottom {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px 40px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid var(--rdb-border);
+  margin-top: 32px;
+}
+.footer-copy {
+  font-size: 12px;
+  color: var(--rdb-muted);
+}
+.footer-social {
+  display: flex;
+  gap: 12px;
+}
+.footer-social a {
+  font-size: 18px;
+  color: var(--rdb-muted);
+  transition: color .2s;
+}
+.footer-social a:hover { color: var(--rdb-dark); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  .header-inner { padding: 12px 20px; }
+  .header-nav { gap: 20px; }
+  .header-nav a { font-size: 11px; letter-spacing: .8px; }
+  .header-logo-text { font-size: 18px; }
+  .header-logo-text span { font-size: 16px; }
+  .logo-bee { width: 40px; height: 40px; }
+  .logo-bee::before { font-size: 28px; }
+  .page-content { padding: 28px 16px 60px; }
+  .page-hero h1 { font-size: 24px; }
+  .hive-metrics { grid-template-columns: 1fr; }
+  .hive-metric:not(:last-child)::after { display: none; }
+  .hive-metric { border-bottom: 1px solid var(--rdb-border); }
+  .hive-metric:last-child { border-bottom: none; }
+  .hive-metric-value { font-size: 24px; }
+  .feed-item { gap: 14px; }
+  .feed-timeline { width: 40px; }
+  .feed-avatar { width: 40px; height: 40px; font-size: 12px; }
+  .feed-photo { max-width: 100%; }
+  .footer-inner { grid-template-columns: 1fr; text-align: center; gap: 20px; }
+  .footer-right { text-align: center; }
+  .footer-links { text-align: center; }
+  .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+}
+
+@media (max-width: 480px) {
+  .header-icons { gap: 10px; }
+  .header-nav { display: none; }
+  .page-hero .contact-line { font-size: 13px; padding: 6px 14px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ── ANNOUNCEMENT BAR (from store theme) ── -->
+<div class="announce-bar">Free shipping on orders $50+</div>
+
+<!-- ── HEADER (from store theme) ── -->
+<header class="site-header">
+  <div class="header-inner">
+    <a href="/" class="header-logo">
+      <div class="header-logo-text">RAINY<span>DAY</span><span>BEES</span></div>
+      <div class="logo-bee"></div>
+    </a>
+    <nav class="header-nav">
+      <a href="/collections">SHOP ONLINE</a>
+      <a href="/pages/services">SERVICES</a>
+      <a href="/pages/meet">MEET</a>
+    </nav>
+    <div class="header-icons">
+      <svg class="header-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      <svg class="header-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+      <svg class="header-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+    </div>
+  </div>
+</header>
+
+<!-- ── PAGE CONTENT ── -->
+<main class="page-content">
+
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <h1>Dufault Hive Updates</h1>
+    <p class="subtitle">Your hive health and inspection history</p>
+    <div class="contact-line">
+      🐝&nbsp; Questions? Call or text <a href="tel:2065198505">Peter at 206.519.8505</a>
+    </div>
+  </div>
+
+  <!-- ── HIVE DATA ── -->
+  <section class="hive-data-section">
+    <div class="section-label">Your Hives — Live Data</div>
+    <div class="hive-cards">
+
+      <!-- HIVE 1 -->
+      <div class="hive-card">
+        <div class="hive-card-header">
+          <div class="hive-card-name">
+            <span class="hive-emoji">🏠</span> Hive 1 — Duncan
+          </div>
+          <div class="hive-card-updated">Updated Feb 24, 2026 · 6:00 PM</div>
+        </div>
+        <div class="hive-metrics">
+          <div class="hive-metric">
+            <div class="hive-metric-icon weight">⚖️</div>
+            <div class="hive-metric-value">91.29 <span class="hive-metric-unit">lbs</span></div>
+            <div class="hive-metric-label">Weight</div>
+            <div class="hive-metric-trend up">↑ +2.3 lbs this week</div>
+          </div>
+          <div class="hive-metric">
+            <div class="hive-metric-icon temp">🌡️</div>
+            <div class="hive-metric-value">41 <span class="hive-metric-unit">°F</span></div>
+            <div class="hive-metric-label">Temperature</div>
+            <div class="hive-metric-trend neutral">— Seasonal</div>
+          </div>
+          <div class="hive-metric">
+            <div class="hive-metric-icon humidity">💧</div>
+            <div class="hive-metric-value">62 <span class="hive-metric-unit">%</span></div>
+            <div class="hive-metric-label">Humidity</div>
+            <div class="hive-metric-trend neutral">— Normal</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- HIVE 2 -->
+      <div class="hive-card">
+        <div class="hive-card-header">
+          <div class="hive-card-name">
+            <span class="hive-emoji">🏠</span> Hive 2 — Nolte
+          </div>
+          <div class="hive-card-updated">Updated Feb 24, 2026 · 6:00 PM</div>
+        </div>
+        <div class="hive-metrics">
+          <div class="hive-metric">
+            <div class="hive-metric-icon weight">⚖️</div>
+            <div class="hive-metric-value">56.02 <span class="hive-metric-unit">lbs</span></div>
+            <div class="hive-metric-label">Weight</div>
+            <div class="hive-metric-trend down">↓ -4.1 lbs this week</div>
+          </div>
+          <div class="hive-metric">
+            <div class="hive-metric-icon temp">🌡️</div>
+            <div class="hive-metric-value">39 <span class="hive-metric-unit">°F</span></div>
+            <div class="hive-metric-label">Temperature</div>
+            <div class="hive-metric-trend down">↓ Below normal</div>
+          </div>
+          <div class="hive-metric">
+            <div class="hive-metric-icon humidity">💧</div>
+            <div class="hive-metric-value">58 <span class="hive-metric-unit">%</span></div>
+            <div class="hive-metric-label">Humidity</div>
+            <div class="hive-metric-trend neutral">— Normal</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── INSPECTION FEED ── -->
+  <section class="feed-section">
+    <div class="section-label">Inspection History</div>
+
+    <div class="feed-year"><span>2026</span></div>
+
+    <div class="feed-list">
+
+      <!-- Entry 1 -->
+      <div class="feed-item">
+        <div class="feed-timeline">
+          <div class="feed-avatar">AP</div>
+          <div class="feed-line"></div>
+        </div>
+        <div class="feed-body">
+          <div class="feed-meta">
+            <span class="feed-date">February 11, 2026</span>
+            <span class="feed-dot"></span>
+            <span class="feed-beekeeper">Asha Patterson</span>
+          </div>
+          <div class="feed-badges">
+            <span class="feed-badge healthy">✓ Hive 1 — Healthy</span>
+            <span class="feed-badge critical">⚠ Hive 2 — Colony Loss</span>
+          </div>
+          <div class="feed-text">
+            Today I added a scale to the hive set up on the right so that we can keep track of the hive/colonies weight throughout the seasons. Unfortunately the colonies didn't make it through the winter this year. Next visit I'll do a deeper look into what could have been the cause of death.
+          </div>
+          <div class="feed-photo">
+            <div class="feed-photo-placeholder">📷</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Entry 2 -->
+      <div class="feed-item">
+        <div class="feed-timeline">
+          <div class="feed-avatar">AP</div>
+          <div class="feed-line"></div>
+        </div>
+        <div class="feed-body">
+          <div class="feed-meta">
+            <span class="feed-date">January 13, 2026</span>
+            <span class="feed-dot"></span>
+            <span class="feed-beekeeper">Asha Patterson</span>
+          </div>
+          <div class="feed-badges">
+            <span class="feed-badge healthy">✓ Hive 1 — Healthy</span>
+            <span class="feed-badge attention">⚡ Hive 2 — Needs Attention</span>
+          </div>
+          <div class="feed-text">
+            Hive 1 is alive! The cluster is small and we will be giving it extra feed on our next visit. Hive 2 has unfortunately passed due to mites, and will be replaced in the Spring. We tested a new mite treatment this year, but these hives were in the control group. The good news is the new mite treatment seemed to work well and your hives will get the new treatment this year!
+          </div>
+        </div>
+      </div>
+
+      <!-- Entry 3 -->
+      <div class="feed-item">
+        <div class="feed-timeline">
+          <div class="feed-avatar">SO</div>
+          <div class="feed-line"></div>
+        </div>
+        <div class="feed-body">
+          <div class="feed-meta">
+            <span class="feed-date">November 15, 2025</span>
+            <span class="feed-dot"></span>
+            <span class="feed-beekeeper">Sean O'Hara</span>
+          </div>
+          <div class="feed-badges">
+            <span class="feed-badge healthy">✓ Hive 1 — Healthy</span>
+            <span class="feed-badge healthy">✓ Hive 2 — Healthy</span>
+          </div>
+          <div class="feed-text">
+            Winter prep complete! Both hives have been wrapped with insulation and have adequate food stores. The cluster sizes look good heading into the cold months. We'll check back in January for a mid-winter assessment.
+          </div>
+          <div class="feed-photo">
+            <div class="feed-photo-placeholder">🐝</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Entry 4 -->
+      <div class="feed-item">
+        <div class="feed-timeline">
+          <div class="feed-avatar">PN</div>
+        </div>
+        <div class="feed-body">
+          <div class="feed-meta">
+            <span class="feed-date">September 22, 2025</span>
+            <span class="feed-dot"></span>
+            <span class="feed-beekeeper">Peter Nolte</span>
+          </div>
+          <div class="feed-badges">
+            <span class="feed-badge healthy">✓ Hive 1 — Healthy</span>
+            <span class="feed-badge healthy">✓ Hive 2 — Healthy</span>
+          </div>
+          <div class="feed-text">
+            Fall mite treatment applied to both hives. Both colonies are looking strong and have built up good honey stores for winter. Harvested about 15 lbs of surplus honey from Hive 1 — it's a beautiful dark amber. Left plenty for the bees to overwinter on.
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="load-more">
+      <button>Load older updates ↓</button>
+    </div>
+  </section>
+
+</main>
+
+<!-- ── FOOTER (from store theme) ── -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <h3>Rainy Day Bees</h3>
+      <p>Local Seattle honey and honeybees.</p>
+    </div>
+    <div class="footer-links">
+      <a href="/collections">Shop Online</a>
+      <a href="/pages/services">Services</a>
+      <a href="/pages/meet">Meet</a>
+    </div>
+    <div class="footer-right">
+      <a href="/search">Search</a>
+      <a href="/pages/about">About Us</a>
+      <a href="/blogs/blog">Blog</a>
+      <a href="/policies/terms-of-service">Terms of Service</a>
+      <a href="/policies/shipping-policy">Shipping Policy</a>
+      <a href="/policies/privacy-policy">Privacy Policy</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">Copyright © Rainy Day Bees 2026 · Powered by Shopify</div>
+    <div class="footer-social">
+      <a href="#" title="Instagram">📷</a>
+      <a href="#" title="Facebook">📘</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
